@@ -33,7 +33,7 @@ echo "Done."
 
 echo "Creating directories..."
 /usr/bin/mkdir -p $BASEDIR
-cd $BASEDIR
+cd $BASEDIR/earlybird
 echo "Done."
 
 echo "Cloning from github..."
