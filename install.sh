@@ -32,7 +32,7 @@ echo "Installing python module fastapi..."
 echo "Done."
 
 echo "Creating directories..."
-/usr/bin/mkdir -p $BASEDIR
+/usr/bin/mkdir -p $BASEDIR/earlybird
 cd $BASEDIR/earlybird
 echo "Done."
 
