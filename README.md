@@ -46,7 +46,7 @@ The install directory is:
 
 To install ```earlybird``` use the following commands:
 ```
-wget https://raw.githubusercontent.com/Zyzonix/earlybird/install.sh
+wget https://raw.githubusercontent.com/Zyzonix/earlybird/main/install.sh
 ```
 And (as ```root```):
 ```
