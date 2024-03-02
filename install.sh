@@ -10,7 +10,7 @@
 # project       | earlybird
 # file version  | 1.0
 #
-BASEDIR=/opt/
+BASEDIR=/opt
 SYSTEMSERVICEPATH=/etc/systemd/system/
 
 echo "Started earlybird-Installer | https://github.com/Zyzonix/earlybird"
@@ -24,7 +24,7 @@ if [ $USR -ne 0 ]
 fi
 
 echo "Installing required packages with APT..."
-/usr/bin/apt install wakeonlan ipmitool python3-pip git
+/usr/bin/apt install wakeonlan ipmitool python3-pip git -y
 echo "Done."
 
 echo "Installing python module fastapi..."
