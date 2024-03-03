@@ -20,7 +20,7 @@ This software is designed to be run on a Raspberry Pi. After a powerloss our UPS
 
 **Remind to configure WoL properly on all machines that should be waked up via Wake-on-LAN! (Wake-on-LAN: g)**
 Those hosts must also be in the same network!
-Additionally this scripts can only be executed on Linux!
+Additionally this scripts can only be executed on Linux and **systemd**-based distributions!
 For clients being waked up via IPMI: the server hosting this software **must** have access to the IPMI interfaces of the servers!
 
 
@@ -57,10 +57,8 @@ The install script will to the rest!
 ## Configuration
 
 
-**The log files can be found under ```/var/log/earlybird```, on systemd-based systems also the following can be used:**
-```
-journalctl -u <service>
-``` 
+**The log files can be found under ```/var/log/earlybird```**
+
 Both scripts will try to resolve the local hostname to provide URLs (Web/Email), be sure that your ```/etc/hosts``` is correct!
 
 ### clients.ini
@@ -122,7 +120,9 @@ If you wish to disable mailing, just leave all values empty (replace with ```""`
 * Move all install instructions to an installation file
 * Provide current power status on startpage (required JS)
 
-This programm is the successor of Zyzonix's ```attic/wolserver```
+----
+
+This program is the successor of Zyzonix's ```attic/wolserver```
 
 
 
