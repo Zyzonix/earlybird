@@ -3,11 +3,13 @@ Description=earlybird (/opt/earlybird) - Server Application: http://<hostname>
 After=network.target
 
 [Service]
-Type=forking
-User=root
+Type=simple
+
 ExecStart=/usr/bin/earlybird server
-StandardOutput=file:/var/log/earlybird/webclient.log
-StandardError=file:/var/log/earlybird/webclient.log
+
+StandardOutput=append:/var/log/earlybird/webclient.log
+StandardError=append:/var/log/earlybird/webclient.log
+
 WorkingDirectory=/opt/earlybird
 
 [Install]
