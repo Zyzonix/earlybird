@@ -119,6 +119,7 @@ If you wish to disable mailing, just leave all values empty (replace with ```""`
 ## To-Do
 * Move all install instructions to an installation file
 * Provide current power status on startpage (required JS)
+* Add comment section to each entry in client.ini that is later presented on the webclient for an easier identifying
 
 ----
 
