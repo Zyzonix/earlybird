@@ -39,7 +39,7 @@ class mailHandler():
         mailText += "Base directory: " + BASEDIR + "\n" 
         mailText += "Client configuration file: " + SERVERSPATH + "\n"
         mailText += "earlybird-Server: " + SERVERIP + "\n" 
-        mailText += "Systemservices Webserver: earlybird-server\n" 
+        mailText += "Systemservices Webserver: earlybird-webclient\n" 
         mailText += "Systemservices Wakeup: earlybird-wakeup\n" 
         mailText += "\n-----------------------\n"
 
