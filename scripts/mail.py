@@ -93,7 +93,7 @@ class mailHandler():
             for client in ipmiClientsToWakeup:
                 mailText += "- " + client + "\n"
         
-        if not (wolClientsToWakeup and ipmiClientsToWakeup):
+        if not wolClientsToWakeup and not ipmiClientsToWakeup:
             mailText += "\nNo clients to wakeup found...\n\n"
 
         mailText += "-----------------------\n"
