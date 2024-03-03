@@ -194,7 +194,7 @@ class handleWakeup():
             localStatusWoLUnknownList = []
             if statusWoLUnknownList:
                 for client in statusWoLUnknownList:
-                    localStatusWoLUnknownList.append(statusWoLUnknownList)
+                    localStatusWoLUnknownList.append(client)
 
                 for client in localStatusWoLUnknownList:
                     logging.write("[WoL] Trying to wake up " + client)
@@ -218,7 +218,7 @@ class handleWakeup():
             localStatusIPMIUnknownList = []
             if statusIPMIUnknownList:
                 for client in statusIPMIUnknownList:
-                    localStatusIPMIUnknownList.append(statusIPMIUnknownList)
+                    localStatusIPMIUnknownList.append(client)
 
                 for client in localStatusIPMIUnknownList:
                     logging.write("[IPMI] Trying to wake up " + client)
