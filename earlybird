@@ -27,7 +27,7 @@ if [ $USR -ne 0 ]
   exit
 fi
 
-if [[ "$KEY" == "server" ]]; then
+if [[ "$KEY" == "webclient" ]]; then
     echo "INFO  | Recognized 'server' key - starting webserver script"
     $PYTHON $BASEDIR/webclient.py
 
