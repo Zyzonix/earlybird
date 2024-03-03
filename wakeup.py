@@ -190,48 +190,60 @@ class handleWakeup():
         while RETRIESLEFT > 0:
             logging.write("Wakeup intervals left: " + str(RETRIESLEFT - 1))
 
-            for client in statusWoLUnknownList:
-                logging.write("[WoL] Trying to wake up " + client)
-                # check if pingable, if yes, remove from unknownList and add to successful dict
-                pingable = handleWakeup.pingHost(client, clients[client]["server_ip"])
-                
-                if pingable:
-                    logging.write("[WoL] Can ping " + client + " (" + str(clients[client]["server_ip"]) + ")")
-                    awakeWoLList[client] = "Client running (" + clients[client]["server_ip"] + ")" 
-                    statusWoLUnknownList.remove(client)
-                
-                else:
-                    logging.write("[WoL] Cannot ping " + client + " (" + str(clients[client]["server_ip"]) + ")")
-                    returnValue, reason = handleWakeup.wakeupClient(client, clients[client])
-                    if not returnValue:
-                        if reason == "failed":
-                            failedWoLList[client] = "Wakeup failed"
-                            statusWoLUnknownList.remove(client)
+            # first add all clients to a separate list which will be the base for the loop
+            localStatusWoLUnknownList = []
+            if statusWoLUnknownList:
+                for client in statusWoLUnknownList:
+                    localStatusWoLUnknownList.append(statusWoLUnknownList)
+
+                for client in localStatusWoLUnknownList:
+                    logging.write("[WoL] Trying to wake up " + client)
+                    # check if pingable, if yes, remove from unknownList and add to successful dict
+                    pingable = handleWakeup.pingHost(client, clients[client]["server_ip"])
                     
-            for client in statusIPMIUnknownList:
-                logging.write("[IPMI] Trying to wake up " + client)
-                # check if pingable, if yes, remove from unknownList and add to successful dict
-                if clients[client]["server_ip"]: pingable = handleWakeup.pingHost(client, clients[client]["server_ip"])
-                else: pingable = False
+                    if pingable:
+                        logging.write("[WoL] Can ping " + client + " (" + str(clients[client]["server_ip"]) + ")")
+                        awakeWoLList[client] = "Client running (" + clients[client]["server_ip"] + ")" 
+                        statusWoLUnknownList.remove(client)
+                    
+                    else:
+                        logging.write("[WoL] Cannot ping " + client + " (" + str(clients[client]["server_ip"]) + ")")
+                        returnValue, reason = handleWakeup.wakeupClient(client, clients[client])
+                        if not returnValue:
+                            if reason == "failed":
+                                failedWoLList[client] = "Wakeup failed"
+                                statusWoLUnknownList.remove(client)
 
-                if pingable:
-                    logging.write("[IPMI] Can ping " + client + " (" + str(clients[client]["server_ip"]) + ")")
-                    awakeIPMIList[client] = "Client running"
-                    statusIPMIUnknownList.remove(client)
+            # first add all clients to a separate list which will be the base for the loop
+            localStatusIPMIUnknownList = []
+            if statusIPMIUnknownList:
+                for client in statusIPMIUnknownList:
+                    localStatusIPMIUnknownList.append(statusIPMIUnknownList)
 
-                else:
-                    returnValue, reason = handleWakeup.wakeupClient(client, clients[client])
-                    if not returnValue:
-                        
-                        if reason == "failed":
-                            failedIPMIList[client] = "Failed to connect via IPMI - check config!"
-                            statusIPMIUnknownList.remove(client)     
-                        
-                        elif reason == "success":
+                for client in localStatusIPMIUnknownList:
+                    logging.write("[IPMI] Trying to wake up " + client)
+                    # check if pingable, if yes, remove from unknownList and add to successful dict
+                    if clients[client]["server_ip"]: pingable = handleWakeup.pingHost(client, clients[client]["server_ip"])
+                    else: pingable = False
 
-                            # add to list, to check if host ist pingable later
-                            successfulIPMIwakeupList.append(client)
-                            statusIPMIUnknownList.remove(client)
+                    if pingable:
+                        logging.write("[IPMI] Can ping " + client + " (" + str(clients[client]["server_ip"]) + ")")
+                        awakeIPMIList[client] = "Client running"
+                        statusIPMIUnknownList.remove(client)
+
+                    else:
+                        returnValue, reason = handleWakeup.wakeupClient(client, clients[client])
+                        if not returnValue:
+                            
+                            if reason == "failed":
+                                failedIPMIList[client] = "Failed to connect via IPMI - check config!"
+                                statusIPMIUnknownList.remove(client)     
+                            
+                            elif reason == "success":
+
+                                # add to list, to check if host ist pingable later
+                                successfulIPMIwakeupList.append(client)
+                                statusIPMIUnknownList.remove(client)
                 
             for client in successfulIPMIwakeupList:
 
