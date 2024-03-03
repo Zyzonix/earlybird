@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 
-ExecStart=/usr/bin/earlybird server
+ExecStart=/usr/bin/earlybird webclient
 
 StandardOutput=append:/var/log/earlybird/webclient.log
 StandardError=append:/var/log/earlybird/webclient.log
