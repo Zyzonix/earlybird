@@ -1,17 +1,16 @@
 [Unit]
 Description=earlybird (/opt/earlybird) - Auto Wakeup - Web-Application: http://<hostname>
-Wants=network-online.target
-After=network.target network-online.target
-StartLimitIntervalSec=0
+After=network.target
  
 [Service]
-Type=forking
-Restart=always
-RestartSec=1
-User=root
+Type=simple
+
 ExecStart=/usr/bin/earlybird wakeup
+
 StandardOutput=file:/var/log/earlybird/wakeup.log
 StandardError=file:/var/log/earlybird/wakeup.log
+
+WorkingDirectory=/opt/earlybird
  
 [Install]
 WantedBy=multi-user.target
