@@ -28,7 +28,7 @@ if [ $USR -ne 0 ]
 fi
 
 if [[ "$KEY" == "webclient" ]]; then
-    echo "INFO  | Recognized 'server' key - starting webserver script"
+    echo "INFO  | Recognized 'webclient' key - starting webserver script"
     $PYTHON $BASEDIR/webclient.py
 
 elif [[ "$KEY" == *"wakeup"* ]]; then
