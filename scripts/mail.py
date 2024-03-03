@@ -94,7 +94,7 @@ class mailHandler():
                 mailText += "- " + client + "\n"
         
         if not (wolClientsToWakeup and ipmiClientsToWakeup):
-            mailText += "\nNo clients to wakeup found..."
+            mailText += "\nNo clients to wakeup found...\n\n"
 
         mailText += "-----------------------\n"
         mailText += "All configured hosts can also be waked up manually in the webinterface of: http://" + hostinformationHandler.getFullHostname() + "/"
