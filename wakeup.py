@@ -271,14 +271,15 @@ class handleWakeup():
             RETRIESLEFT -= 1
 
         # start to build final mail, if enabled
-        if MAILENABLED: mail.mailHandler.sendMail(wolClientsToWakeup, 
-                                                  ipmiClientsToWakeup,
-                                                  awakeWoLList, 
-                                                  awakeIPMIList,
-                                                  successfulIPMIwakeupList, 
-                                                  failedWoLList,
-                                                  failedIPMIList,
-                                                  clients)
+        if MAILENABLED: mail.mailHandler.sendMail(
+            wolClientsToWakeup, 
+            ipmiClientsToWakeup,
+            awakeWoLList, 
+            awakeIPMIList,
+            successfulIPMIwakeupList, 
+            failedWoLList,
+            failedIPMIList,
+            clients)
 
 class wakeup():
 
