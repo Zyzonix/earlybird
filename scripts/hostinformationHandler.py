@@ -40,6 +40,9 @@ def getFullHostname():
 
             if fullHostname[len(fullHostname) - 1] == " ":
                 fullHostname = fullHostname[:-1]
+
+        if " " in fullHostname:
+            fullHostname = fullHostname.split(" ")[0]
     except:
         logging.writeError("Failed to get full hostname")
         logging.writeExecError(traceback.format_exc())
