@@ -57,6 +57,12 @@ def clientImportData(serversImpHandler, client):
                     logging.write("No server ip configured for " + client)
                     clientServerIP = ""
 
+                try: 
+                    clientIPMICipher = serversImpHandler[client]["cipher"]
+                except:
+                    logging.write("No cipher configured for " + client)
+                    clientIPMICipher = "3"
+
                 # add all settings to dictionary
                 # check if clientAutowakeup is not empty
                 if clientIPMIIP and clientIPMIPassword and clientIPMIUsername and (clientAutowakeup != ""):
@@ -66,6 +72,7 @@ def clientImportData(serversImpHandler, client):
                     clientData["ipmi_ip"] = clientIPMIIP
                     clientData["autowakeup"] = clientAutowakeup
                     clientData["server_ip"] = clientServerIP
+                    clientData["cipher"] = clientIPMICipher
             
             except:
                 logging.writeError("Configuration of host " + client + " incomplete!")
