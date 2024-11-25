@@ -83,10 +83,12 @@ autowakeup = True
 ipmi_username = IPMIUSER
 ipmi_password = IPMIPASSWD
 ipmi_ip = IPADDRESS
+cipher = 3
 server_ip = IPADDRESS
 ```
 The parameters: ```type```, ```autowakeup```, ```ipmi_username```, ```ipmi_password``` and ```ipmi_ip``` are required! ```server_ip``` is optional, **if no server IP should be provided, leave this key, but leave the value empty!** Errors might occur if ```server_ip``` is not present!
 ```HOSTNAME``` must be uppercase!
+Leave ```cipher``` to the default value ```3```, only change this, if required!
 
 ### config.py
 
