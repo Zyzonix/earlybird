@@ -27,6 +27,7 @@ def wakeOnLAN(mac):
 def ipmiPowerStatus(clientData):
     resultPowerStatusEncoded = subprocess.run("/usr/bin/ipmitool -I lanplus -H " 
                                                 + clientData["ipmi_ip"] 
+                                                + " -C " + clientData["cipher"]
                                                 + " -U " + clientData["ipmi_username"] 
                                                 + " -P " + clientData["ipmi_password"] 
                                                 + " power status", capture_output=True, shell=True)
@@ -37,6 +38,7 @@ def ipmiPowerStatus(clientData):
 def ipmiPowerOn(clientData):
     resultPowerOnEncoded = subprocess.run("/usr/bin/ipmitool -I lanplus -H " 
                                                 + clientData["ipmi_ip"] 
+                                                + " -C " + clientData["cipher"]
                                                 + " -U " + clientData["ipmi_username"] 
                                                 + " -P " + clientData["ipmi_password"] 
                                                 + " power on", capture_output=True, shell=True)
