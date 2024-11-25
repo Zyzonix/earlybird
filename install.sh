@@ -26,12 +26,7 @@ fi
 
 echo ""
 echo "Installing required packages with APT..."
-/usr/bin/apt install wakeonlan ipmitool python3-pip git -y
-echo "Done."
-
-echo ""
-echo "Installing python module fastapi..."
-/usr/bin/pip3 install uvicorn fastapi
+/usr/bin/apt install wakeonlan ipmitool python3-pip git python3-fastapi -y
 echo "Done."
 
 echo ""
