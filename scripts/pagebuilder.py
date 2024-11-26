@@ -212,7 +212,7 @@ def ipmi(clientName, request):
                     resultPowerStatus = resultPowerStatusEncoded.stdout.decode()[:-1]
                     
                     if "Chassis Power Control: Up/On" in resultPowerOn and "" == resultPowerOnErr:
-                        resp += "<h3>Successful!</h3><p>IPMI-Status of " + clientName + " is: " + resultPowerStatus + "</p><p>IPMI-PowerOnStatus of " + clientName + " is: " + resultPowerOn + "</p>""            
+                        resp += "<h3>Successful!</h3><p>IPMI-Status of " + clientName + " is: " + resultPowerStatus + "</p><p>IPMI-PowerOnStatus of " + clientName + " is: " + resultPowerOn + "</p>"           
                         logging.write("Sent wake up command to IPMI console")
                         logging.write("Server wakeup successful!")
                 
