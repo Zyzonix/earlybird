@@ -211,8 +211,8 @@ def ipmi(clientName, request):
                     resultPowerOnErr = resultPowerOnEncoded.stderr.decode()[:-1]
                     resultPowerStatus = resultPowerStatusEncoded.stdout.decode()[:-1]
                     
-                    if "Chassis Power Control: Up/On" in resultPowerOn and "" == resultPowerOnErr:
-                        resp += "<h3>Successful!</h3><p>IPMI-Status of " + clientName + " is: " + resultPowerStatus + "</p><p>IPMI-PowerOnStatus of " + clientName + " is: " + resultPowerOn + "</p>"           
+                    if "Chassis Power Control: Up/On" in resultPowerOn and "" == resultPowerOnErr and "Chassis Power is on" in resultPowerStatus:
+                        resp += "<h3>Successful!</h3><p>IPMI-Status of " + clientName + " is: " + resultPowerStatus + "</p>"            
                         logging.write("Sent wake up command to IPMI console")
                         logging.write("Server wakeup successful!")
                 
@@ -226,6 +226,11 @@ def ipmi(clientName, request):
                             resp += "<p>Command output: <i>" + resultPowerOnErr + "</i></p>"
                             logging.writeError("Result power on: " + resultPowerOnErr)    
                         logging.writeError("IPMI boot command of " + clientName + " failed - check config.")
+
+                    logging.writeError("ipmiPowerStatus Output:")
+                    logging.writeError("- resultPowerOn: " + str(resultPowerOn))
+                    logging.writeError("- resultPowerOnErr: " + str(resultPowerOnErr))
+                    logging.writeError("- resultPowerStatus: " + str(resultPowerStatus))
 
                 # if devide already powered on                 
                 elif "Chassis Power is on" in resultPowerStatus:

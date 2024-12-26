@@ -112,6 +112,11 @@ class handleWakeup():
                     logging.writeError("[IPMI] IPMI boot command of " + clientName + " failed - check config.")
                     reason = "failed"
 
+                    logging.writeError("ipmiPowerStatus Output:")
+                    logging.writeError("- resultPowerOn: " + str(resultPowerOn))
+                    logging.writeError("- resultPowerOnErr: " + str(resultPowerOnErr))
+                    logging.writeError("- resultPowerStatus: " + str(resultPowerStatus))
+
             # if devide already powered on                 
             elif "Chassis Power is on" in resultPowerOn:
                 logging.write(clientName + " already powered on")
