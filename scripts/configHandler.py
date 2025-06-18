@@ -59,10 +59,10 @@ def clientImportData(serversImpHandler, client):
                 clientIPMIPassword = serversImpHandler[client]["ipmi_password"]
                 clientAutowakeup = serversImpHandler.getboolean(client, "autowakeup")
                 try: 
-                    clientServerIP = serversImpHandler[client]["client_ip"]
+                    clientIP = serversImpHandler[client]["client_ip"]
                 except:
                     logging.write("No server ip configured for " + client)
-                    clientServerIP = ""
+                    clientIP = ""
 
                 try: 
                     clientIPMICipher = serversImpHandler[client]["cipher"]
@@ -78,7 +78,7 @@ def clientImportData(serversImpHandler, client):
                     clientData["ipmi_password"] = clientIPMIPassword
                     clientData["ipmi_ip"] = clientIPMIIP
                     clientData["autowakeup"] = clientAutowakeup
-                    clientData["client_ip"] = clientServerIP
+                    clientData["client_ip"] = clientIP
                     clientData["cipher"] = clientIPMICipher
             
             except:

@@ -66,7 +66,7 @@ def startpage(request):
         wol += "<th>Hostname</th>"
         wol += "<th>Description</th>"
         wol += "<th>MAC</th>"
-        wol += "<th>Server-IP</th>"
+        wol += "<th>Client-IP</th>"
         wol += "<th>Autowakeup enabled</th>"
         wol += "</tr>"
         for client in clients:

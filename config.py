@@ -16,7 +16,7 @@
 #-----------------------------
 
 # software version
-VERSION="1.0"
+VERSION="1.1"
 
 # base directory
 # PATHS must end with '/'!
