@@ -15,6 +15,7 @@ import subprocess
 import traceback
 
 from scripts.logHandler import logging
+from ..config import PUBLICSERVERNAME
 
 # scheme
 #hostname = "unknown"
@@ -23,29 +24,34 @@ from scripts.logHandler import logging
 # get hostname with local dns-suffix
 def getFullHostname():
     fullHostname = "unknown"
-    try:
 
-        # request dns suffix
-        resultEncoded = subprocess.run("/usr/bin/hostname -A", capture_output=True, shell=True)
-        result = resultEncoded.stdout.decode()[:-1]
-        resultErr = resultEncoded.stderr.decode()[:-1]
-        if resultErr:
-            logging.writeError("Failed to get DNS suffix (command exited with error)")
-        else:
-            # in case of 'hostname hostname' --> only one time hostname
-            if str(platform.node() + " ") in result:
-                logging.write("Correcting retrieved hostname from " + result + " to " + platform.node())
-                fullHostname = platform.node()
-            else: fullHostname = result
+    if PUBLICSERVERNAME: 
+        fullHostname = PUBLICSERVERNAME
+        logging.write("Using predefined hostname from config: " + PUBLICSERVERNAME)
+    else:
+        try:
 
-            if fullHostname[len(fullHostname) - 1] == " ":
-                fullHostname = fullHostname[:-1]
+            # request dns suffix
+            resultEncoded = subprocess.run("/usr/bin/hostname -A", capture_output=True, shell=True)
+            result = resultEncoded.stdout.decode()[:-1]
+            resultErr = resultEncoded.stderr.decode()[:-1]
+            if resultErr:
+                logging.writeError("Failed to get DNS suffix (command exited with error)")
+            else:
+                # in case of 'hostname hostname' --> only one time hostname
+                if str(platform.node() + " ") in result:
+                    logging.write("Correcting retrieved hostname from " + result + " to " + platform.node())
+                    fullHostname = platform.node()
+                else: fullHostname = result
 
-        if " " in fullHostname:
-            fullHostname = fullHostname.split(" ")[0]
-    except:
-        logging.writeError("Failed to get full hostname")
-        logging.writeExecError(traceback.format_exc())
+                if fullHostname[len(fullHostname) - 1] == " ":
+                    fullHostname = fullHostname[:-1]
+
+            if " " in fullHostname:
+                fullHostname = fullHostname.split(" ")[0]
+        except:
+            logging.writeError("Failed to get full hostname")
+            logging.writeExecError(traceback.format_exc())
 
     return fullHostname
 

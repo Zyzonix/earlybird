@@ -26,6 +26,10 @@ SERVERSPATH = BASEDIR + "clients.ini"
 # ip to bind server on
 SERVERIP="<IPv4>"
 
+# public server name e.g. if running behind proxy with different public and local domain
+# scheme must be: server.domain.com (optional setting)
+PUBLICSERVERNAME=""
+
 # required APT packages for this tool
 REQUIREDAPTPACKAGES=["ipmitool", "wakeonlan"]
 
