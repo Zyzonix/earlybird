@@ -100,6 +100,7 @@ The following values are hardcoded at the beginning of the main configuration fi
 Key | Setting
 ---|---
 ```SERVERIP``` | Define local IP on which the webserver should bind on
+```PUBLICSERVERNAME``` | Define a different domain than the local (mainly for use behind a proxy)
 ```WAKEUPINTERVAL``` | The interval between the program tries to wakeup configured servers
 ```RETRYCOUNT``` | Count of how often the program reruns
 

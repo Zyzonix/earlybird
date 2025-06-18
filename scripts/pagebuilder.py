@@ -41,7 +41,7 @@ def startpage(request):
     tr:nth-child(even) {
         background-color: #e0e0eb;
     }
-    </style></head><body><h1>''' + hostname + ''' | IPMI/Wake-on-LAN-Server</h1><p>Please click on the hostname of the server you want to wakeup.</p>'''
+    </style></head><body><h1>''' + hostname + ''' | IPMI/Wake-on-LAN-Server</h1><p>Please click on the hostname of the server you want to wake up.</p>'''
     header += "<hr>"
 
     answer += header
