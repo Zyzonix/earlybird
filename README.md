@@ -63,16 +63,19 @@ Both scripts will try to resolve the local hostname to provide URLs (Web/Email),
 
 ### clients.ini
 Define your hosts to wakeup within the file ```clients.ini``` along this scheme:
+It is strongly recommended to define always all parameters, do not remove them, otherwise there might be a key-error!
 
 **WoL-Server entries format:**
 ```
 [HOSTNAME]
 type = wol
+description = PC-Description-here
 mac = MACADDRESS 
 autowakeup = True/False
 server_ip = IPADDRESS
 ```
-All parameters: ```type```, ```mac```, ```autowakeup``` and ```server_ip``` are required! 
+The parameters: ```type```, ```mac```, ```autowakeup``` and ```server_ip``` are required! 
+```description``` can be left empty: ```description = ```
 ```HOSTNAME``` must be uppercase!
 
 **IPMI-Server entries format:**
@@ -122,6 +125,7 @@ If you wish to disable mailing, just leave all values empty (replace with ```""`
 * Move all install instructions to an installation file
 * Provide current power status on startpage (required JS)
 * Add comment section to each entry in client.ini that is later presented on the webclient for an easier identifying
+* Add option to set timestamp for autowakeup, should include also weekdays
 
 ----
 

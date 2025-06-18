@@ -64,6 +64,7 @@ def startpage(request):
         wol += "<table>"
         wol += "<tr>"
         wol += "<th>Hostname</th>"
+        wol += "<th>Description</th>"
         wol += "<th>MAC</th>"
         wol += "<th>Server-IP</th>"
         wol += "<th>Autowakeup enabled</th>"
@@ -74,6 +75,9 @@ def startpage(request):
 
                 wol += "<tr>"
                 wol += "<td><a href='http://" + hostname + "/wol/" + client + "'> " + client + "</a></td>"
+                description = "-"
+                if clients[client]["description"]: description = clients[client]["description"]
+                wol += "<td>" + str(description) +"</td>"
                 wol += "<td>" + clients[client]["mac"] +"</td>"
                 ip = "unknown"
                 if clients[client]["server_ip"]: ip = clients[client]["server_ip"]

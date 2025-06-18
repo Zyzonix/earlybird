@@ -32,10 +32,17 @@ def clientImportData(serversImpHandler, client):
                 clientAutowakeup = serversImpHandler.getboolean(client, "autowakeup")
                 clientIP = serversImpHandler[client]["server_ip"]
 
+                try:
+                    clientDescription = serversImpHandler[client]["description"]
+                except:
+                    logging.write("No description provided for " + client + "")
+                    clientDescription = ""
+
                 # add all settings to dictionary
                 # check if clientAutowakeup is not empty
                 if clientMAC and (clientAutowakeup != ""):
                     clientData["type"] = clientType.lower()
+                    clientData["description"] = clientDescription
                     clientData["mac"] = clientMAC.lower()
                     clientData["autowakeup"] = clientAutowakeup
                     clientData["server_ip"] = clientIP
