@@ -63,6 +63,18 @@ echo "Enabling services..."
 echo "Done."
 
 echo ""
+printf "%s " "Enter IP Address to bind webclient on (can be changed later in config.py):"
+read IP
+sed -i "s+SERVERIP.*+SERVERIP=$IP+g" /opt/earlybird/config.py
+echo "Done."
+
+echo ""
+printf "%s " "Enter public domain if different from local e.g. for use behind proxy (can be left empty and/or changed later in config.py):"
+read PUBLICSERVERNAME
+sed -i "s+PUBLICSERVERNAME.*+PUBLICSERVERNAME=$PUBLICSERVERNAME+g" /opt/earlybird/config.py
+echo "Done."
+
+echo ""
 echo "Installation complete."
 echo "Configure your hosts in" $BASEDIR/earlybird/clients.ini
 
