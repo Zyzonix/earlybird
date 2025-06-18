@@ -72,9 +72,9 @@ type = wol
 description = PC-Description-here
 mac = MACADDRESS 
 autowakeup = True/False
-server_ip = IPADDRESS
+client_ip = IPADDRESS
 ```
-The parameters: ```type```, ```mac```, ```autowakeup``` and ```server_ip``` are required! 
+The parameters: ```type```, ```mac```, ```autowakeup``` and ```client_ip``` are required! 
 ```description``` can be left empty: ```description = ```
 ```HOSTNAME``` must be uppercase!
 
@@ -87,9 +87,9 @@ ipmi_username = IPMIUSER
 ipmi_password = IPMIPASSWD
 ipmi_ip = IPADDRESS
 cipher = 3
-server_ip = IPADDRESS
+client_ip = IPADDRESS
 ```
-The parameters: ```type```, ```autowakeup```, ```ipmi_username```, ```ipmi_password``` and ```ipmi_ip``` are required! ```server_ip``` is optional, **if no server IP should be provided, leave this key, but leave the value empty!** Errors might occur if ```server_ip``` is not present!
+The parameters: ```type```, ```autowakeup```, ```ipmi_username```, ```ipmi_password``` and ```ipmi_ip``` are required! ```client_ip``` is optional, **if no server IP should be provided, leave this key, but leave the value empty!** Errors might occur if ```client_ip``` is not present!
 ```HOSTNAME``` must be uppercase!
 Leave ```cipher``` to the default value ```3```, only change this, if required!
 
