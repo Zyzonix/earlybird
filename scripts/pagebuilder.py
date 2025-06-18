@@ -80,7 +80,7 @@ def startpage(request):
                 wol += "<td>" + str(description) +"</td>"
                 wol += "<td>" + clients[client]["mac"] +"</td>"
                 ip = "unknown"
-                if clients[client]["server_ip"]: ip = clients[client]["server_ip"]
+                if clients[client]["client_ip"]: ip = clients[client]["client_ip"]
                 wol += "<td>" + str(ip) +"</td>"
                 autowakeup = "unknown"
                 if clients[client]["autowakeup"] != "": autowakeup = clients[client]["autowakeup"]
@@ -98,7 +98,7 @@ def startpage(request):
         ipmi += "<th>Hostname</th>"
         ipmi += "<th>IPMI-IP</th>"
         ipmi += "<th>Autowakeup enabled</th>"
-        ipmi += "<th>Server IP</th>"
+        ipmi += "<th>Client-IP</th>"
         ipmi += "</tr>"
         for client in clients:
             if clients[client]["type"] == "ipmi":
@@ -109,7 +109,7 @@ def startpage(request):
                 ipmi += "<td>" + clients[client]["ipmi_ip"] +"</td>"
                 if clients[client]["autowakeup"] != "": autowakeup = clients[client]["autowakeup"]
                 ipmi += "<td>" + str(autowakeup) +"</td>"
-                ipmi += "<td>" + clients[client]["server_ip"] +"</td>"
+                ipmi += "<td>" + clients[client]["client_ip"] +"</td>"
                 ipmi += "</tr>"
         ipmi += "</table><br>" 
         if not foundClientsWithIPMI:

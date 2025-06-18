@@ -46,20 +46,20 @@ class mailHandler():
         if awakeWoLList:
             mailText += "\nSuccessfully woke up the follwing hosts via WoL:\n"
             for client in awakeWoLList.keys():
-                mailText += "[WoL] " + client + " (" + str(allClientData[client]["server_ip"]) + ") [" + allClientData[client]["mac"] + "] - " + awakeWoLList[client] + "\n"
+                mailText += "[WoL] " + client + " (" + str(allClientData[client]["client_ip"]) + ") [" + allClientData[client]["mac"] + "] - " + awakeWoLList[client] + "\n"
             mailText += "\n"
 
         if failedWoLList:
             mailText += "\nFailed to wake up the follwing hosts via WoL:\n"
             for client in failedWoLList.keys():
-                mailText += "[WoL] " + client + " (" + str(allClientData[client]["server_ip"]) + ") [" + allClientData[client]["mac"] + "] - " + failedWoLList[client] + "\n"
+                mailText += "[WoL] " + client + " (" + str(allClientData[client]["client_ip"]) + ") [" + allClientData[client]["mac"] + "] - " + failedWoLList[client] + "\n"
             mailText += "\n"
         
         if awakeIPMIList:
             mailText += "\nSuccessfully woke up the follwing hosts via IPMI:\n"
             for client in awakeIPMIList.keys():
-                if allClientData[client]["server_ip"]: 
-                    mailText += "[IPMI] " + client + " (" + str(allClientData[client]["server_ip"]) + "), IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - " + awakeIPMIList[client] + "\n"
+                if allClientData[client]["client_ip"]: 
+                    mailText += "[IPMI] " + client + " (" + str(allClientData[client]["client_ip"]) + "), IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - " + awakeIPMIList[client] + "\n"
                 else: 
                     mailText += "[IPMI] " + client + ", IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - " + awakeIPMIList[client] + "\n"
             mailText += "\n"
@@ -67,8 +67,8 @@ class mailHandler():
         if successfulIPMIwakeupList:
             mailText += "\nSuccessfully woke up the following hosts via IPMI but cannot ping them (IP might not be provided):\n"
             for client in successfulIPMIwakeupList:
-                if allClientData[client]["server_ip"]: 
-                    mailText += "[IPMI] " + client + " (" + str(allClientData[client]["server_ip"]) + "), IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - Cannot ping host OS\n"
+                if allClientData[client]["client_ip"]: 
+                    mailText += "[IPMI] " + client + " (" + str(allClientData[client]["client_ip"]) + "), IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - Cannot ping host OS\n"
                 else: 
                     mailText += "[IPMI] " + client + " (no IP provided), IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - IPMI boot command sent successfully\n"
             mailText += "\n"
@@ -76,8 +76,8 @@ class mailHandler():
         if failedIPMIList:
             mailText += "\nFailed to wake up the follwing hosts via IPMI:\n"
             for client in failedIPMIList.keys():
-                if allClientData[client]["server_ip"]: 
-                    mailText += "[IPMI] " + client + " (" + str(allClientData[client]["server_ip"]) + "), IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - " + awakeIPMIList[client] + "\n"
+                if allClientData[client]["client_ip"]: 
+                    mailText += "[IPMI] " + client + " (" + str(allClientData[client]["client_ip"]) + "), IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - " + awakeIPMIList[client] + "\n"
                 else: 
                     mailText += "[IPMI] " + client + ", IPMI-IP: " + allClientData[client]["ipmi_ip"] + " - " + failedIPMIList[client] + "\n"
             mailText += "\n"
