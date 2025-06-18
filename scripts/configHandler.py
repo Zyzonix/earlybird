@@ -49,6 +49,7 @@ def clientImportData(serversImpHandler, client):
             
             except:
                 logging.writeError("Configuration of host " + client + " incomplete!")
+                logging.writeExecError(traceback.print_exc())
 
         # if client will be crontrolled with ipmi
         elif clientType == "ipmi":

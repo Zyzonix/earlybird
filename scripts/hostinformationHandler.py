@@ -15,19 +15,20 @@ import subprocess
 import traceback
 
 from scripts.logHandler import logging
-from ..config import PUBLICSERVERNAME
 
 # scheme
 #hostname = "unknown"
 # fullHostname = "unknown.localdomain"
 
+publicHostname = ""
+
 # get hostname with local dns-suffix
 def getFullHostname():
     fullHostname = "unknown"
 
-    if PUBLICSERVERNAME: 
-        fullHostname = PUBLICSERVERNAME
-        logging.write("Using predefined hostname from config: " + PUBLICSERVERNAME)
+    if publicHostname: 
+        fullHostname = publicHostname
+        logging.write("Using predefined hostname from config: " + publicHostname)
     else:
         try:
 

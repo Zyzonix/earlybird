@@ -25,6 +25,8 @@ from scripts import pagebuilder
 from scripts.logHandler import logging
 from config import *
 
+hostinformationHandler.publicHostname = PUBLICSERVERNAME
+
 app=FastAPI()
 
 app.add_middleware(
