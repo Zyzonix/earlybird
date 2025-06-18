@@ -127,6 +127,8 @@ If you wish to disable mailing, just leave all values empty (replace with ```""`
 * Provide current power status on startpage (required JS)
 * Add comment section to each entry in client.ini that is later presented on the webclient for an easier identifying
 * Add option to set timestamp for autowakeup, should include also weekdays
+* Add option to wakeup all from web with email notification (simply restart wakeup.service)
+* WoL add auto ping every 15sec and give reseult back to webpage
 
 ----
 
